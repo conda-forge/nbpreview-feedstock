@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/nbpreview-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/nbpreview-{{ version }}.tar.gz
   sha256: 6ef37b3233de3d45df8905a547cbddb1dfd086621b8e67ab0e4a08b572b3a5c9
 
 build:
@@ -15,13 +15,13 @@ build:
     - nbpreview = nbpreview.__main__:app
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
     - pip
     - poetry-core >=1.0.0
-    - python >=3.8,<4.0
+    - python {{ python_min }}
   run:
     - click-help-colors >=0.9.1
     - html2text >=2020.1.16
@@ -36,7 +36,7 @@ requirements:
     - pillow >=8.3.1,<10.0.0
     - pygments >=2.10.0
     - pylatexenc >=2.10
-    - python >=3.8,<4.0
+    - python >={{ python_min }},<4.0
     - rich >=12.4.1
     - term-image >=0.3.0
     - typer >=0.4.1,<0.6.0
@@ -53,6 +53,7 @@ test:
     - nbpreview --help
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/paw-lu/nbpreview

@@ -1,5 +1,5 @@
 {% set name = "nbpreview" %}
-{% set version = "0.9.1" %}
+{% set version = "0.10.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/nbpreview-{{ version }}.tar.gz
-  sha256: 6ef37b3233de3d45df8905a547cbddb1dfd086621b8e67ab0e4a08b572b3a5c9
+  sha256: 6144f2c0315fff6f83e7ba526949d372080ac77853cc24c985149a04ef5e59aa
 
 build:
   entry_points:
@@ -15,7 +15,7 @@ build:
     - nbpreview = nbpreview.__main__:app
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+  number: 0
 
 requirements:
   host:
